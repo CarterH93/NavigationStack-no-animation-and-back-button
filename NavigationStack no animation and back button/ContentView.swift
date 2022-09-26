@@ -1,21 +1,49 @@
 //
 //  ContentView.swift
-//  NavigationStack no animation and back button
+//  TextToSpeechIOSTutorial
 //
-//  Created by Carter Hawkins on 9/25/22.
+//  Created by Charles Suddens on 30/04/22.
 //
 
 import SwiftUI
 
+
 struct ContentView: View {
+    init() {
+            UINavigationBar.setAnimationsEnabled(false)
+        }
+
+    var body: some View {
+        NavigationStack {
+            VStack {
+                NavigationLink(destination: PageTwo()){
+                    Text("Go to Page Two")
+                }
+            }
+        }
+    }
+}
+
+// Hide from page 2 -> page 1
+struct PageTwo: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            NavigationLink(destination: PageThree()){
+                Text("Go to Page Three")
+            }
+            .navigationBarBackButtonHidden(true)
         }
-        .padding()
+    }
+}
+
+
+
+struct PageThree: View {
+    var body: some View {
+        VStack {
+            Text("Hello!")
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
